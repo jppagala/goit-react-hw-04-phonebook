@@ -1,0 +1,10 @@
+.appContainer {
+  height: 100vh;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: left;
+  padding-left: 20px;
+  padding-top: 20px;
+
+  color: #010101;
+}

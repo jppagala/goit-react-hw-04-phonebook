@@ -1,0 +1,13 @@
+.contactItem {
+  padding: 10px;
+  padding-left: 5px;
+}
+
+.contactItem > p {
+  display: inline-block;
+  margin: 0;
+}
+
+.contactItem > button {
+  margin-left: 20px;
+}
