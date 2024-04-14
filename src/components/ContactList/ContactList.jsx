@@ -3,31 +3,25 @@ import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 import ContactListItem from '../ContactListItem/ContactListItem';
 
-class ContactList extends React.Component {
-  static propTypes = {
-    contacts: PropTypes.array.isRequired,
-    filter: PropTypes.string.isRequired,
-    deleteContact: PropTypes.func.isRequired,
-  };
+const ContactList = ({ contacts, deleteContact }) => {
+  return (
+    <div>
+      <ul className={css.contactListContainer}>
+        {contacts.map(contact => (
+          <ContactListItem
+            key={contact.id}
+            contact={contact}
+            deleteContact={deleteContact}
+          />
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-  render() {
-    const { contacts, filter, deleteContact } = this.props;
-
-    return (
-      <div>
-        <ul className={css.contactListContainer}>
-          {contacts.map(contact => (
-            <ContactListItem
-              key={contact.id}
-              contact={contact}
-              filter={filter}
-              deleteContact={deleteContact}
-            />
-          ))}
-        </ul>
-      </div>
-    );
-  }
-}
+ContactList.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+};
 
 export default ContactList;

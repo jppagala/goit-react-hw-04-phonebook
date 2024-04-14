@@ -2,32 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './SearchFilter.module.css';
 
-class SearchFilter extends React.Component {
-  static propTypes = {
-    filter: PropTypes.string,
-    changeFilter: PropTypes.func.isRequired,
+const SearchFilter = ({ filter, changeFilter }) => {
+  const handleChange = event => {
+    changeFilter(event.target.value);
   };
 
-  handleChange = event => {
-    this.props.changeFilter(event.target.value);
-  };
+  return (
+    <div>
+      <p>Find contacts by name:</p>
+      <input
+        className={css.input}
+        type="input"
+        name="filter"
+        value={filter}
+        onChange={handleChange}
+        placeholder="Input name to filter"
+      />
+    </div>
+  );
+};
 
-  render() {
-    const { filter } = this.props;
-    return (
-      <div>
-        <p>Find contacts by name:</p>
-        <input
-          className={css.input}
-          type="input"
-          name="filter"
-          value={filter}
-          onChange={this.handleChange}
-          placeholder="Input name to filter"
-        />
-      </div>
-    );
-  }
-}
+SearchFilter.propTypes = {
+  filter: PropTypes.string,
+  changeFilter: PropTypes.func.isRequired,
+};
 
 export default SearchFilter;
